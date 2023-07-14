@@ -35,7 +35,9 @@ jobs:
           7z a sat.7z * -x@3rdparty/excludefiles.txt
           VER=$(awk 'BEGIN{ORS=""}/version/{print $NF}' version.ini)
           FN32="sat-v$VER-setup32.exe"
-          cat 3rdparty/7zSDx86.sfx 3rdparty/config.txt sat.7z > dist/$FN32
+          cat 3rdparty/7zSDx86.sfx 3rdparty/config.txt sat.7z > $FN32
+          ls -al
+          mv $FN32 dist
           ls -al
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v3
