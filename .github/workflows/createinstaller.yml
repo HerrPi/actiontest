@@ -51,7 +51,7 @@ jobs:
           prerelease: false
           release_name: Release v${{ steps.version.outputs.version }}
           tag_name: v${{ steps.version.outputs.version }}
-        #          body_path: README.md
+          body_path: ./README.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload release asset
@@ -60,8 +60,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./bla.exe
-          asset_name: bla.exe
+          asset_path: ./sat-v${{ steps.version.outputs.version }}-setup32.exe
+          asset_name: sat-v${{ steps.version.outputs.version }}-setup32.exe
           asset_content_type: application/exe
 #      - name: "Upload Artifact"
 #        uses: actions/upload-artifact@v3
