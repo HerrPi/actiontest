@@ -36,12 +36,10 @@ jobs:
           VER=$(awk 'BEGIN{ORS=""}/version/{print $NF}' version.ini)
           FN32="sat-v$VER-setup32.exe"
           cat 3rdparty/7zSDx86.sfx 3rdparty/config.txt sat.7z > $FN32
-          ls -al
           mv $FN32 dist
-          ls -al
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v3
         with:
-          name: sim-artifact
+          name: sim-artifact.exe
           path: dist
           retention-days: 5
