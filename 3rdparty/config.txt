@@ -1,0 +1,11 @@
+;!@Install@!UTF-8!
+;InstallPath="C:\\xampp\\htdocs\\simactiontest"
+Title="Sim Action Test installation"
+BeginPrompt="Action test wirklich installieren?"
+ExtractTitle="Sim Action Test installation"
+ExtractDialogText="Sim Action Test wird installiert..."
+RunProgram="DelOldInst.bat"
+Shortcut="Du,{C:\\Programme\\Mozilla Firefox\\firefox.exe},{localhost/simactiontest},{},{Sim Action Test},{Sim Action Test},{},{C:\\xampp\\htdocs\\simactiontest\\img\\favicon.ico}"
+;FinishMessage="Audiomanager wurde installiert!"
+Delete="C:\\xampp\\htdocs\\simactiontest\\DelOldInst.bat"
+;!@InstallEnd@!
