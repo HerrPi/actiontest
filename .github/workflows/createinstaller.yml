@@ -32,9 +32,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
+          7z a test.7z *
           ls -al
-          pwd
-          apt-get install -y p7zip-full
-          7z
-          echo test, and deploy your project.
