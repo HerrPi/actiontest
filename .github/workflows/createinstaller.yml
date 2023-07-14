@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: sim-artifact
-          path: dist
+          path: $FN32
           retention-days: 5
