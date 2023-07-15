@@ -35,23 +35,45 @@ jobs:
           tag_name: v${{ steps.version.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      - name: Release
-#        uses: actions/create-release@v1
-#        id: create_release
-#        with:
-#          draft: false
-#          prerelease: false
-#          release_name: Release v${{ steps.version.outputs.version }}
-#          tag_name: v${{ steps.version.outputs.version }}
-#          body: ${{ github.event.head_commit.message }}
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#      - name: Upload release asset
-#        uses: actions/upload-release-asset@v1
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        with:
-#          upload_url: ${{ steps.create_release.outputs.upload_url }}
-#          asset_path: ./${{ steps.filename.outputs.filename }}
-#          asset_name: ${{ steps.filename.outputs.filename }}
-#          asset_content_type: application/exe
+      - name: eMail Test
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # Specify connection via URL (replaces server_address, server_port, secure,
+          # username and password)
+          #
+          # Format:
+          #
+          #  * smtp://user:password@server:port
+          #  * smtp+starttls://user:password@server:port
+          #connection_url: ${{ secrets.MAIL_CONNECTION }}
+          server_address: w0112c76.kasserver.com
+          server_port: 587
+          # Optional whether this connection use TLS (default is true if server_port is 465)
+          secure: true
+          # Optional (recommended) mail server username:
+          username: m02e4620
+          # Optional (recommended) mail server password:
+          password: ${{ secrets.GDVE_MAIL_PW }}
+          subject: GdvE-Audiomanager (v${{ steps.version.outputs.version }}) wurde released
+          to: Simon Brenner <herrpi@gmail.com>
+          from: Github GAM Pipeline <mailservice@gdve-kl.de>
+          # Optional plain body:
+          body: Dies ist der plain body für v${{ steps.version.outputs.version }}
+          # Optional HTML body read from file:
+          #html_body: file://README.html
+          # Optional carbon copy recipients:
+          #cc: kyloren@example.com,leia@example.com
+          # Optional blind carbon copy recipients:
+          #bcc: r2d2@example.com,hansolo@example.com
+          # Optional recipient of the email response:
+          #reply_to: luke@example.com
+          # Optional Message ID this message is replying to:
+          #in_reply_to: <random-luke@example.com>
+          # Optional unsigned/invalid certificates allowance:
+          ignore_cert: true
+          # Optional converting Markdown to HTML (set content_type to text/html too):
+          convert_markdown: true
+          # Optional attachments:
+          #attachments: attachments.zip,git.diff,./dist/static/*.js
+          # Optional priority: 'high', 'normal' (default) or 'low'
+          #priority: low
