@@ -44,35 +44,21 @@ jobs:
           to: Simon Brenner <herrpi@gmail.com>
           from: Github GAM Pipeline <mailservice@gdve-kl.de>
           # Optional plain body:
-          body: |
-            ${{ github.repository }} » ${{ github.ref_name }} - [Build # ${{ github.run_number }}][1] - ${{ job.status }}
-
-            Commit: ${{ github.sha }}
-
-            [1]: ${{ github.event.head_commit.url }}
+          #body: |
           html_body: |
-            ${{ github.repository }} » ${{ github.ref_name }} - [Build # ${{ github.run_number }}](${{ github.event.head_commit.url }}) - ${{ job.status }}
+            Hallo Freunde,
 
-            Commit: **${{ github.sha }}**
+            ein neuer GdvE-Audiomanager (v${{ steps.version.outputs.version }}) steht zum Download bereit:
+            https://github.com/HerrPi/actiontest/releases/download/v${{ steps.version.outputs.version }}/${{ steps.filename.outputs.filename }}
 
-            Dies ist der plain body für v${{ steps.version.outputs.version }}
+            Die letzte Commit Message lautet:
+            ${{ github.event.head_commit.message }}
 
-            Letzter Commit: ${{ github.event.head_commit.message }}
+            Falls euch die Änderungsdetails interessieren, hier der Link zum Commit von ${{ github.event.head_commit.author.name }}:
+            ${{ github.event.head_commit.url }}
 
-            Author: ${{ github.event.head_commit.author.name }}
-
-            Added: ${{ github.event.head_commit.added }}
-
-            Mod: ${{ github.event.head_commit.modified }}
-
-            URL: ${{ github.event.head_commit.url }}
+            Viele Grüße aus der Bitbucket Pipeline.
           convert_markdown: true
-          #            Dies ist der plain body für v${{ steps.version.outputs.version }}
-          #            Letzter Commit: ${{ github.event.head_commit.message }}
-          #            Author: ${{ github.event.head_commit.author.name }}
-          #            Added: ${{ github.event.head_commit.added }}
-          #            Mod: ${{ github.event.head_commit.modified }}
-          #            URL: ${{ github.event.head_commit.url }}
           # Optional HTML body read from file:
           #html_body: file://email.html
           # Optional carbon copy recipients:
