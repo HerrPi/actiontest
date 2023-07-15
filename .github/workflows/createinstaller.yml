@@ -49,7 +49,7 @@ jobs:
           server_address: w0112c76.kasserver.com
           server_port: 587
           # Optional whether this connection use TLS (default is true if server_port is 465)
-          secure: true
+          #secure: true
           # Optional (recommended) mail server username:
           username: m02e4620
           # Optional (recommended) mail server password:
