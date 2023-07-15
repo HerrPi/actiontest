@@ -16,6 +16,14 @@ jobs:
         run: |
           VER=$(awk 'BEGIN{ORS=""}/version/{print $NF}' version.ini)
           echo "::set-output name=version::$VER"
+      - name: Output version new
+        id: version2
+        run: |
+          VER=$(awk 'BEGIN{ORS=""}/version/{print $NF}' version.ini)
+          echo "version=$VER" >> $GITHUB_OUTPUT
+      - name: Test step
+        run: |
+          echo VER ist ${{ steps.version2.outputs.version }}
       - name: Create setup32.exe and output FN
         id: filename
         run: |
